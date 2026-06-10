@@ -1,14 +1,14 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=24112747&assignment_repo_type=AssignmentRepo)
 # Day 10 Lab: Data Pipeline & Data Observability
 
-**Student Email:** email@example.com
-**Name:** (Dien ten cua ban)
+**Student Email:** minh.nht31@vinuni.edu.vn
+**Name:** Minh NHT
 
 ---
 
 ## Mo ta
 
-(Mo ta ngan gon bai lab va nhung gi ban da lam)
+Bài lab này tập trung vào việc xây dựng một hệ thống ETL Pipeline cơ bản (Extract, Validate, Transform, Load) bằng Python và Pandas. Đồng thời, bài lab còn giúp kiểm tra, đánh giá tính Observability và tầm quan trọng của Data Quality thông qua việc sử dụng mô hình AI (Agent) đưa ra các dự đoán dựa trên dữ liệu thật (Clean) và dữ liệu rác (Garbage). Thông qua đó, rút ra bài học về ảnh hưởng nghiêm trọng của dữ liệu dị biệt tới logic của AI.
 
 ---
 
@@ -16,7 +16,7 @@
 
 ### Prerequisites
 ```bash
-pip install pandas
+pip install pandas pytest
 ```
 
 ### Chay ETL Pipeline
@@ -26,7 +26,8 @@ python solution.py
 
 ### Chay Agent Simulation (Stress Test)
 ```bash
-# Mo ta cach ban chay thi nghiem Clean vs Garbage data
+python generate_garbage.py
+python agent_simulation.py
 ```
 
 ---
@@ -44,4 +45,6 @@ python solution.py
 
 ## Ket qua
 
-(Tom tat ket qua: bao nhieu records da xu ly, bao nhieu bi loai, v.v.)
+Tổng số bản ghi ban đầu là 5. Sau khi chạy qua bước validate, có 3 bản ghi hợp lệ được giữ lại, và 2 bản ghi bị loại (do lỗi giá trị âm hoặc category rỗng). 
+Dữ liệu cuối cùng được transform (tính giảm giá 10% và chuẩn hóa category) và lưu vào `processed_data.csv` thành công.
+Khi thử nghiệm Agent Simulation, agent cho phản hồi hợp lý với dữ liệu sạch nhưng lại bị đánh lừa và chọn mua 'Nuclear Reactor' với giá $999999 khi chạy trên dữ liệu rác.
